@@ -7,7 +7,7 @@ const db = require('./src/configs/db')
 const cors = require('cors')
 
 const server = express()
-const PORT = 8080
+const PORT = 9000
 
 // parse application/x-www-form-urlencoded
 server.use(bodyParser.urlencoded({ extended: false }))

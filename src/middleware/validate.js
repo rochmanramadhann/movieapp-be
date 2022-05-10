@@ -1,11 +1,11 @@
-const baseResponse = require('../helpers/base_response')
+const baseResponse = require('../helpers/baseResponse')
 const jwt = require('jsonwebtoken')
 
 const validateToken = (req, res, next) => {
-    const {auth_token} = req.headers
+    const { auth_token } = req.headers
 
     if (!auth_token) {
-        return baseResponse(res, 401, {message : 'Silahkan login terlebih dahulu'})
+        return baseResponse(res, 401, { message: 'Please login first to continue' })
     }
 
     jwt.verify(auth_token, process.env.JWT_KEYS, (error, decode) => {
@@ -13,7 +13,7 @@ const validateToken = (req, res, next) => {
             return baseResponse(res, 401, error)
         }
 
-        req.users = decode
+        req.user = decode
         next()
     })
 }
